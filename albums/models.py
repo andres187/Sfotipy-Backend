@@ -7,3 +7,5 @@ class Album(models.Model):
 	cover = models.ImageField(upload_to='albums')
 	artist = models.ForeignKey(Artist)
 
+	def __unicode__(self):
+		return self.title
