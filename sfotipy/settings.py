@@ -28,6 +28,12 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+   
+TEMPLATE_CONTEXT_PROCESSORS = TCP+(
+    "sfotipy.context_processors.basico",
+)
+
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -70,7 +76,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'UTC'
 
