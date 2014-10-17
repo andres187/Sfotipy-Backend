@@ -4,6 +4,21 @@
 	<title>{{object.first_name}}</title>
 </head>
 <body>
-	{{object.first_name}}
+	{% load static from staticfiles %}
+	{% if fav_artist %}
+
+	Pagina de artista:
+	{{fav_artist.first_name}} {{fav_artist.second_name}}
+
+	{% else %}
+
+	Listado de artistas:
+	{% for a in artists %}
+
+	{{a.second_name}}
+
+	{% endfor %}
+	{% endif %}
+	<img src="{% static "2.png" %}">
 </body>
 </html>
