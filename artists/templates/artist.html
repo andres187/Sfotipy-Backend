@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>{{object.first_name}}</title>
+	<title>
+	{{titulo}}
+	{% if fav_artist %}
+	{{object.first_name}}
+	{% else %}
+	Artistas
+	{% endif %}</title>
 </head>
 <body>
 	{% load static from staticfiles %}

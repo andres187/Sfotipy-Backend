@@ -20,7 +20,7 @@ ALLOWED_HOSTS = ['localhost']
 SECRET_KEY = '@vu)qnmi^rzxtw+duo8hlxptaf%&4e@qap%pj@@%t4aoq802pn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = True
 
@@ -95,6 +95,19 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 
 )
+
+CACHE = {
+    'default': {
+        'BACKEND': 'redis_cache.RedisCache',
+        'LOCATION': 'localhost:6379',
+        'OPTIONS': {
+            'DB': 1,
+            #'PASSWORD': 'yayaya',
+            'PARSER_CLASS': 'redis.connection.HiredisParser'
+        }
+    }
+}
+
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
 
 
