@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.conf import settings
 from artists.views import ArtistDetailView, ArtistListView
+from tracks.views import TrackListView
 from django.contrib import admin
 admin.autodiscover()
 from rest_framework import routers
@@ -21,6 +22,7 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^tracks/(?P<title>[\w\-\W]+)/', 'tracks.views.track_view', name='track_view'),
+    url(r'^tracks/', TrackListView.as_view()),
     url(r'^signup/', 'userprofiles.views.signup', name='signup'),
     url(r'^signin/', 'userprofiles.views.signin', name='signin'),
     url(r'^artists/(?P<pk>[\d]+)', ArtistDetailView.as_view()),

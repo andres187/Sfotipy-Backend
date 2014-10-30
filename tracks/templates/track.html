@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Track {{titulo}}</title>
+	<title>Track {{titulo}} {{selected_track}}</title>
 </head>
 <body>
 <section>
@@ -32,6 +32,14 @@
 		Artist: {{track.artist}}
 		Biography: {{track.artist.biography}}
 	</p>
+
+
+	Listado de tracks:
+	{% for a in tracks %}
+
+	{{a.title}}
+
+	{% endfor %}
 </section>
 </body>
 </html>

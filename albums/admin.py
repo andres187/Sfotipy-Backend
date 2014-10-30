@@ -1,5 +1,14 @@
 from django.contrib import admin
 
 from .models import Album
+from sorl.thumbnail import get_thumbnail
 
-admin.site.register(Album)
+class AlbumAdmin(admin.ModelAdmin):
+	list_display = ('title', 'imagen_album')
+
+	def imagen_album(self, obj):
+		return '<img src="%s">' % get_thumbnail(obj.cover, '200x100', crop='center', format='PNG').url
+
+	imagen_album.allow_tags = True
+
+admin.site.register(Album, AlbumAdmin)

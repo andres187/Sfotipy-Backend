@@ -1,5 +1,6 @@
 from random import choice
 
+
 frases = ["Aleatorio1", "Aleatorio3", "Aleatorio2"]
 
 from tracks.models import Track
@@ -12,3 +13,4 @@ def basico(request):
 			track = t
 			break
 	return {'titulo': choice(frases), 'tracks': tracks, 'selected_track': track}
+

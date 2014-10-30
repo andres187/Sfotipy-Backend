@@ -46,17 +46,21 @@ INSTALLED_APPS = (
     'artists',
     'userprofiles',
     'rest_framework',
+    'sorl.thumbnail',
 )
 
 MIDDLEWARE_CLASSES = (
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
     #'sfotipy.middleware.PaisMiddleware',
 )
+
 
 ROOT_URLCONF = 'sfotipy.urls'
 
@@ -108,12 +112,15 @@ CACHE = {
     }
 }
 
+CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
+
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
 
 
 MEDIA_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['media'])
 STATIC_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['content'])
 MEDIA_URL = '/media/'
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
 # Backends
 #AUTHENTICATION_BACKENDS = (
